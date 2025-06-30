@@ -1,16 +1,16 @@
 # swiftapps.pro - Essential macOS Utilities
 
-swiftapps.pro is a collection of my macOS utility apps designed to enhance productivity and improve your workflow. 
+swiftapps.pro is a collection of my macOS apps designed to enhance productivity and improve your workflow. 
 
 ---
 
 ## Live Site
 
-Visit the site at [swiftapps.pro](https://swiftapps.pro).
+Visit the site at [swiftapps.pro](https://swiftapps.pro)
 
 ---
 
-## Technologies Used
+## Built with
 
 - [Next.js](https://nextjs.org/) – React framework for building fast web apps
 - [TypeScript](https://www.typescriptlang.org/) – Typed JavaScript
