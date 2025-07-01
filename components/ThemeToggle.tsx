@@ -19,7 +19,6 @@ export function ThemeToggle() {
   }
 
   if (theme === null) {
-    // Skeleton UI while the theme is being determined
     return (
       <div className="flex items-center justify-center gap-2">
         <div className="h-6 w-6 bg-gray-200 rounded-full animate-pulse"></div>
@@ -30,15 +29,21 @@ export function ThemeToggle() {
   }
 
   return (
-    <div className="flex items-center justify-center gap-2">
-      <Sun className={`h-6 w-6 ${theme === "light" ? "text-yellow-500" : "text-gray-400"}`} />
-      <input
-        type="checkbox"
-        className="appearance-none w-12 h-6 bg-gray-300 rounded-full relative cursor-pointer"
-        onChange={toggleTheme}
-        checked={theme === "dark"}
-      />
-      <Moon className={`h-6 w-6 ${theme === "dark" ? "text-blue-500" : "text-gray-400"}`} />
+    <div className="flex items-center gap-2">
+      <Sun className={`h-5 w-5 transition-colors ${theme === "light" ? "text-yellow-400" : "text-gray-400"}`} />
+      <button
+        onClick={toggleTheme}
+        className={`w-12 h-6 rounded-full relative transition-colors duration-300 ${
+          theme === "dark" ? "bg-gray-700" : "bg-gray-300"
+        }`}
+      >
+        <span
+          className={`absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ${
+            theme === "dark" ? "translate-x-6" : "translate-x-0"
+          }`}
+        />
+      </button>
+      <Moon className={`h-5 w-5 transition-colors ${theme === "dark" ? "text-blue-400" : "text-gray-400"}`} />
     </div>
   )
 }

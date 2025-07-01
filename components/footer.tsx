@@ -50,16 +50,14 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Support</h3>
+            <h3 className="text-lg font-semibold mb-4">Navigate</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>
                 <a
-                  href="https://github.com/ashworth3"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
                   className="hover:text-foreground transition-colors"
                 >
-                  GitHub
+                  Home
                 </a>
               </li>
               <li>

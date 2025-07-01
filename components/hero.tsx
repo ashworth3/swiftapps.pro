@@ -18,7 +18,6 @@ export function Hero() {
           Crafting lightweight, powerful utilities that enhance your Mac experience. Every app is designed with
           simplicity and efficiency.
         </p>
-        <ThemeToggle />
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
           <Button size="lg" className="gap-2" asChild>
             <a href="#apps">

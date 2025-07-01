@@ -16,7 +16,7 @@ export default function PrivacyPolicy() {
               </Link>
             </Button>
             <h1 className="text-4xl font-bold mb-4">Privacy Policy</h1>
-            <p className="text-muted-foreground">Last updated: January 2025</p>
+            <p className="text-muted-foreground">Last updated: June 2025</p>
           </div>
 
           <div className="space-y-8">
@@ -26,8 +26,7 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  Your privacy is important to us. This privacy policy explains how our macOS applications (BatteryClock
-                  and CopyBoard) handle your data and what information we collect, if any.
+                  Your privacy is important to us. This privacy policy explains how our macOS applications handle your data.
                 </p>
               </CardContent>
             </Card>
@@ -82,33 +81,8 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  Neither BatteryClock nor CopyBoard include any analytics, tracking, or telemetry. We believe in
+                  None of our apps include any analytics, tracking, or telemetry. We believe in
                   keeping your usage private and don't collect any usage statistics or crash reports.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Third-Party Services</CardTitle>
-              </CardHeader>
-              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
-                <p>
-                  Our applications do not integrate with any third-party services or APIs. They operate entirely offline
-                  and independently on your Mac.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Updates to This Policy</CardTitle>
-              </CardHeader>
-              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
-                <p>
-                  We may update this privacy policy from time to time. Any changes will be reflected on this page with
-                  an updated "Last updated" date. Continued use of our applications after changes constitutes acceptance
-                  of the updated policy.
                 </p>
               </CardContent>
             </Card>
@@ -119,7 +93,7 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  If you have any questions about this privacy policy or our applications, please{" "}
+                  If you have any questions, please{" "}
                   <Link href="/#contact" className="text-blue-600 hover:underline">
                     contact us
                   </Link>
