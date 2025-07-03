@@ -1,12 +1,11 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Apple, Github, Mail } from "lucide-react"
-import { ThemeToggle } from "@/components/ThemeToggle"
 
 export function Hero() {
   return (
-    <section className="container mx-auto px-4 py-20 text-center">
-      <div className="max-w-4xl mx-auto">
+    <section className="min-h-screen flex items-center justify-center text-center">
+      <div className="max-w-4xl mx-auto -mt-12"> {/* Adjusted margin to raise the text */}
         <a href="https://github.com/ashworth3" target="_blank" rel="noopener noreferrer">
           <Badge variant="secondary" className="mb-4">@ashworth3</Badge>
         </a>
@@ -15,8 +14,7 @@ export function Hero() {
           <span className="text-blue-600 dark:text-blue-400"> Swift Apps</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Crafting lightweight, powerful utilities that enhance your Mac experience. Every app is designed with
-          simplicity and efficiency.
+          Developing simple & intuitive macOS utilities that feel like they should come pre-installed.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
           <Button size="lg" className="gap-2" asChild>

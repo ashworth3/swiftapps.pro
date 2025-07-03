@@ -135,7 +135,7 @@ export function Contact() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
-                  Found a bug or have an idea for a new feature? Report it directly on GitHub.
+                  Found a bug or have an idea for a new feature?
                 </p>
                 <div className="space-y-2">
                   <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
@@ -167,7 +167,7 @@ export function Contact() {
                 <div className="text-center space-y-2">
                   <h3 className="font-semibold">Response Time</h3>
                   <p className="text-sm text-muted-foreground">
-                    I typically respond within 48 hours. For anything urgent, please mention it in your subject line.
+                    I typically respond within 48 hours on weekdays.
                   </p>
                 </div>
               </CardContent>
