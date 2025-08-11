@@ -112,17 +112,33 @@ export function Contact() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Mail className="h-5 w-5" />
-                  Direct Contact
+                  <Github className="h-5 w-5" />
+                  Leave a Star
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
-                  <a href="mailto:ashworthandre@gmail.com">
-                    <Mail className="h-4 w-4" />
-                    ashworthandre@gmail.com
-                  </a>
-                </Button>
+                <div className="space-y-2">
+                  <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
+                    <a
+                      href="https://github.com/ashworth3/BatteryClock"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="h-4 w-4" />
+                      Star BatteryClock
+                    </a>
+                  </Button>
+                  <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
+                    <a
+                      href="https://github.com/ashworth3/CopyBoard"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Github className="h-4 w-4" />
+                      Star CopyBoard
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 
@@ -167,7 +183,7 @@ export function Contact() {
                 <div className="text-center space-y-2">
                   <h3 className="font-semibold">Response Time</h3>
                   <p className="text-sm text-muted-foreground">
-                    I typically respond within 48 hours on weekdays.
+                    I typically respond within 48 hours.
                   </p>
                 </div>
               </CardContent>

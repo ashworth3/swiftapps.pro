@@ -9,7 +9,7 @@ const apps = [
 		name: "BatteryClock",
 		tagline: "Battery Time in Your Touch Bar",
 		description:
-			"A sleek utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences.",
+			"A sleek utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences. Requires Pock (https://pock.app) to be installed and running.",
 		icon: Battery,
 		color: "bg-green-500",
 		features: [
@@ -72,6 +72,20 @@ export function AppShowcase() {
 								</div>
 
 								<p className="text-lg leading-relaxed">{app.description}</p>
+								{app.id === "batteryclock" && (
+									<p className="text-xs text-muted-foreground italic">
+										Requires{" "}
+										<a
+											href="https://pock.app"
+											target="_blank"
+											rel="noopener noreferrer"
+											className="underline hover:text-primary"
+										>
+											Pock
+										</a>{" "}
+										to be installed and running.
+									</p>
+								)}
 
 								<div className="grid sm:grid-cols-2 gap-4">
 									{app.features.map((feature, featureIndex) => (
@@ -128,7 +142,7 @@ export function AppShowcase() {
 				<div className="text-center mb-12">
 					<h2 className="text-3xl md:text-4xl font-bold mb-4">Open Source</h2>
 					<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-						Swift projects on Github
+						Github repositories for all my apps
 					</p>
 				</div>
 
