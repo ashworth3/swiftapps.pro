@@ -4,7 +4,7 @@ import { Apple, Github, Mail } from "lucide-react"
 
 export function Hero() {
   return (
-    <section className="min-h-[80vh] flex items-center justify-center text-center">
+    <section className="min-h-screen flex items-center justify-center text-center">
       <div className="max-w-4xl mx-auto px-4">
         <a
           href="https://github.com/ashworth3"
