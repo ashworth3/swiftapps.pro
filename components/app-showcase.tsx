@@ -9,24 +9,6 @@ import { Battery, Clock, Copy, Download, Zap, Shield, Smartphone, Layers, Github
 
 const apps = [
 	{
-		id: "batteryclock",
-		name: "BatteryClock",
-		tagline: "Battery Time in Your Touch Bar",
-		description:
-			"A sleek utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences. Requires Pock (https://pock.app) to be installed and running.",
-		icon: Battery,
-		color: "bg-green-500",
-		features: [
-			{ icon: Battery, text: "Battery percentage display" },
-			{ icon: Clock, text: "Time remaining estimates" },
-			{ icon: Zap, text: "Smart refresh battery tracking" },
-			{ icon: Smartphone, text: "Seamless Touch Bar integration" },
-		],
-		image: "/batteryclock.png?height=400&width=600",
-		downloadUrl: "https://github.com/ashworth3/BatteryClock/releases/tag/BatteryClock",
-		githubUrl: "https://github.com/ashworth3/BatteryClock",
-	},
-	{
 		id: "copyboard",
 		name: "Copyboard - Clipboard Manager",
 		tagline: "Save and reuse clipboard items",
@@ -44,6 +26,24 @@ const apps = [
 		],
 		image: "/CopyBoard-1.webp",
 		githubUrl: "https://github.com/ashworth3/CopyBoard",
+	},
+	{
+		id: "batteryclock",
+		name: "BatteryClock",
+		tagline: "Battery Time in Your Touch Bar",
+		description:
+			"A sleek utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences. Requires Pock (https://pock.app) to be installed and running.",
+		icon: Battery,
+		color: "bg-green-500",
+		features: [
+			{ icon: Battery, text: "Battery percentage display" },
+			{ icon: Clock, text: "Time remaining estimates" },
+			{ icon: Zap, text: "Smart refresh battery tracking" },
+			{ icon: Smartphone, text: "Seamless Touch Bar integration" },
+		],
+		image: "/batteryclock.png?height=400&width=600",
+		downloadUrl: "https://github.com/ashworth3/BatteryClock/releases/tag/BatteryClock",
+		githubUrl: "https://github.com/ashworth3/BatteryClock",
 	},
 ]
 
