@@ -125,7 +125,7 @@ export function Contact() {
                       rel="noopener noreferrer"
                     >
                       <Github className="h-4 w-4" />
-                      Star BatteryClock
+                      BatteryClock
                     </a>
                   </Button>
                   <Button variant="outline" className="w-full gap-2 bg-transparent" asChild>
@@ -135,7 +135,7 @@ export function Contact() {
                       rel="noopener noreferrer"
                     >
                       <Github className="h-4 w-4" />
-                      Star CopyBoard
+                      CopyBoard
                     </a>
                   </Button>
                 </div>

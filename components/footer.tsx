@@ -11,8 +11,8 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-lg font-semibold mb-4">About</h3>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Swift developer focused on creating simple + powerful utilities that enhance productivity and
-              user experience. All apps are open source and free to use.
+              Building fast, lightweight macOS utilities that stay out of your way and improve your day-to-day
+              flow.
             </p>
             <div className="flex gap-2">
               <Button variant="outline" size="icon" asChild>
@@ -41,11 +41,6 @@ export function Footer() {
                   CopyBoard
                 </a>
               </li>
-              <li>
-                <a href="#github-repos" className="hover:text-foreground transition-colors">
-                  Repositories
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -53,17 +48,9 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Navigate</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>
-                <a
-                  href="#"
-                  className="hover:text-foreground transition-colors"
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <Link href="#contact" className="hover:text-foreground transition-colors">
+                <a href="mailto:ashworthandre@gmail.com" className="hover:text-foreground transition-colors">
                   Contact
-                </Link>
+                </a>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-foreground transition-colors">

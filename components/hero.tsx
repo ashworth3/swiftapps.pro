@@ -32,18 +32,6 @@ export function Hero() {
             </a>
           </Button>
 
-          <Button variant="outline" size="lg" className="gap-2" asChild>
-            <a
-              href="https://github.com/ashworth3"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="View GitHub repositories"
-            >
-              <Github className="h-5 w-5" />
-              View GitHub
-            </a>
-          </Button>
-
           <Button variant="ghost" size="lg" className="gap-2" asChild>
             <a href="#contact">
               <Mail className="h-5 w-5" />
