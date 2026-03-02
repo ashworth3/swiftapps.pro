@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Battery, Clock, Copy, Download, Zap, Shield, Smartphone, Layers, Github, Mail, Dumbbell, Apple } from "lucide-react"
+import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 
 const apps = [
 	{
@@ -456,20 +457,9 @@ export function AppShowcase() {
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
 									{(app as { workInProgress?: boolean }).workInProgress ? (
-										<>
-											<Button size="lg" className="gap-2" asChild>
-												<a href="/?subject=StrengthAI%20updates#contact">
-													<Mail className="h-4 w-4" />
-													Get Updates
-												</a>
-											</Button>
-											<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
-												<a href="#contact">
-													<Mail className="h-4 w-4" />
-													Contact
-												</a>
-											</Button>
-										</>
+										<div className="w-full max-w-md">
+											<GetUpdatesForm />
+										</div>
 									) : app.appStoreUrl ? (
 										<>
 											<a
