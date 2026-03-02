@@ -1,7 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,6 +13,17 @@ import { Mail, MessageSquare, Send, Github, Bug } from "lucide-react"
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null)
+  const searchParams = useSearchParams()
+  const subjectParam = searchParams.get("subject")
+
+  useEffect(() => {
+    if (subjectParam) {
+      const subjectInput = document.getElementById("subject") as HTMLInputElement | null
+      if (subjectInput && !subjectInput.value) {
+        subjectInput.value = decodeURIComponent(subjectParam)
+      }
+    }
+  }, [subjectParam])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()

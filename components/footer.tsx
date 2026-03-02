@@ -11,8 +11,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-lg font-semibold mb-4">About</h3>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Building fast, lightweight macOS utilities that stay out of your way and improve your day-to-day
-              flow.
+              Building fast, lightweight apps and utilities across the Apple ecosystem — designed to stay out of your way and improve your day-to-day flow.
             </p>
             <div className="flex gap-2">
               <Button variant="outline" size="icon" asChild>
@@ -41,6 +40,11 @@ export function Footer() {
                   CopyBoard
                 </a>
               </li>
+              <li>
+                <a href="#strengthai" className="hover:text-foreground transition-colors">
+                  StrengthAI
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -57,6 +61,11 @@ export function Footer() {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <Link href="/privacy/strengthai" className="hover:text-foreground transition-colors">
+                  StrengthAI Privacy
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -68,9 +77,8 @@ export function Footer() {
             © 2025 <a href="#" className="underline hover:text-primary transition-colors">swiftapps.pro</a> | All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>Made for</span>
+            <span>Made for the Apple ecosystem</span>
             <Apple className="h-4 w-4" />
-            <span>macOS</span>
           </div>
         </div>
       </div>
