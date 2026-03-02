@@ -29,7 +29,7 @@ export function GetUpdatesForm({ className }: { className?: string }) {
   if (state.succeeded || rememberedJoin) {
     return (
       <p className={cn("text-sm font-medium text-green-600 dark:text-green-400", className)}>
-        You're in ✅
+        You will receive updates related to StrengthAI progress. ✅
       </p>
     )
   }
