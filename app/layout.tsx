@@ -8,9 +8,9 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "swiftapps.pro - Essential macOS Utilities",
+  title: "swiftapps.pro",
   description:
-    "Discover swift.cv's open-source macOS apps: BatteryClock for real-time Touch Bar battery stats, and CopyBoard for powerful clipboard history and drag & drop. Built for speed, simplicity, and privacy.",
+    "Lightweight apps and utilities for the Apple ecosystem. BatteryClock, CopyBoard, StrengthAI, and more — built for speed, simplicity, and privacy.",
   icons: {
     icon: [
       { url: '/favicon.ico' },

@@ -5,9 +5,29 @@ import { useTheme } from "next-themes"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Battery, Clock, Copy, Download, Zap, Shield, Smartphone, Layers, Github } from "lucide-react"
+import { Battery, Clock, Copy, Download, Zap, Shield, Smartphone, Layers, Github, Mail, Dumbbell, Apple } from "lucide-react"
+import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 
 const apps = [
+	{
+		id: "copyboard",
+		name: "Copyboard - Clipboard Manager",
+		tagline: "Save and reuse clipboard items",
+		description:
+			"A lightweight clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly—now available on the Mac App Store with a DMG download for offline installs.",
+		icon: Copy,
+		color: "bg-blue-500",
+		appStoreUrl: "https://apps.apple.com/us/app/copyboard-clipboard-manager/id6755758977?mt=12",
+		dmgUrl: "https://github.com/ashworth3/CopyBoard/releases/latest/download/CopyBoard-1.0.dmg",
+		features: [
+			{ icon: Copy, text: "Short term clipboard history" },
+			{ icon: Layers, text: "File drag & drop support" },
+			{ icon: Shield, text: "Privacy-focused, only stored locally" },
+			{ icon: Zap, text: "Automatic clipboard detection" },
+		],
+		image: "/CopyBoard-1.webp",
+		githubUrl: "https://github.com/ashworth3/CopyBoard",
+	},
 	{
 		id: "batteryclock",
 		name: "BatteryClock",
@@ -27,23 +47,22 @@ const apps = [
 		githubUrl: "https://github.com/ashworth3/BatteryClock",
 	},
 	{
-		id: "copyboard",
-		name: "Copyboard - Clipboard Manager",
-		tagline: "Save and reuse clipboard items",
+		id: "strengthai",
+		name: "StrengthAI",
+		tagline: "AI-powered strength training, simplified.",
 		description:
-			"A lightweight clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly—now available on the Mac App Store with a DMG download for offline installs.",
-		icon: Copy,
-		color: "bg-blue-500",
-		appStoreUrl: "https://apps.apple.com/us/app/copyboard-clipboard-manager/id6755758977?mt=12",
-		dmgUrl: "https://github.com/ashworth3/CopyBoard/releases/latest/download/CopyBoard-1.0.dmg",
+			"StrengthAI is an in-progress coaching and training companion that helps you build plans, track progress, and stay consistent.",
+		icon: Dumbbell,
+		color: "bg-amber-500",
+		workInProgress: true,
 		features: [
-			{ icon: Copy, text: "Short term clipboard history" },
-			{ icon: Layers, text: "File drag & drop support" },
-			{ icon: Shield, text: "Privacy-focused, only stored locally" },
-			{ icon: Zap, text: "Automatic clipboard detection" },
+			{ icon: Zap, text: "Personalized training plans" },
+			{ icon: Layers, text: "Progress tracking & insights" },
+			{ icon: Shield, text: "OAuth" },
+			{ icon: Github, text: "Accepting beta testers" },
 		],
-		image: "/CopyBoard-1.webp",
-		githubUrl: "https://github.com/ashworth3/CopyBoard",
+		image: "/strengthai.png",
+		badges: ["iOS", "AI"],
 	},
 ]
 
@@ -366,11 +385,24 @@ export function AppShowcase() {
 					>
 						<div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
 							<div className="space-y-6">
+								{(app as { workInProgress?: boolean }).workInProgress && (
+									<Badge variant="outline" className="border-amber-500 text-amber-600 dark:text-amber-400">
+										Work in Progress
+									</Badge>
+								)}
 								<div className="flex items-center gap-4">
 									{app.id === "copyboard" ? (
 										<div className="rounded-2xl">
 											<img
 												src="/CopyBoard.webp"
+												alt={`${app.name} icon`}
+												className="h-16 w-16 rounded-2xl object-cover"
+											/>
+										</div>
+									) : app.id === "strengthai" ? (
+										<div className="rounded-2xl overflow-hidden">
+											<img
+												src="/strengthai-icon.png"
 												alt={`${app.name} icon`}
 												className="h-16 w-16 rounded-2xl object-cover"
 											/>
@@ -405,14 +437,30 @@ export function AppShowcase() {
 								<div className="grid sm:grid-cols-2 gap-4">
 									{app.features.map((feature, featureIndex) => (
 										<div key={featureIndex} className="flex items-center gap-3">
-											<feature.icon className="h-5 w-5 text-muted-foreground" />
+											{app.id === "strengthai" && feature.text === "OAuth" ? (
+												<>
+													<Apple className="h-5 w-5 text-muted-foreground shrink-0" />
+													<svg className="h-5 w-5 shrink-0 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+														<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+														<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+														<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+														<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+													</svg>
+												</>
+											) : (
+												<feature.icon className="h-5 w-5 text-muted-foreground shrink-0" />
+											)}
 											<span className="text-sm">{feature.text}</span>
 										</div>
 									))}
 								</div>
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
-									{app.appStoreUrl ? (
+									{(app as { workInProgress?: boolean }).workInProgress ? (
+										<div className="w-full max-w-md">
+											<GetUpdatesForm />
+										</div>
+									) : app.appStoreUrl ? (
 										<>
 											<a
 												href={app.appStoreUrl}
@@ -463,8 +511,11 @@ export function AppShowcase() {
 								</div>
 
 								<div className="flex gap-2 flex-wrap">
-									<Badge variant="secondary">macOS 10.15+</Badge>
-									<Badge variant="secondary">Swift</Badge>
+									{((app as { badges?: string[] }).badges ?? ["macOS 10.15+", "Swift"]).map((label) => (
+										<Badge key={label} variant="secondary">
+											{label}
+										</Badge>
+									))}
 								</div>
 							</div>
 						</div>
