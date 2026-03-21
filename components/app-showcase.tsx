@@ -5,8 +5,29 @@ import { useTheme } from "next-themes"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Battery, Clock, Copy, Download, Zap, Shield, Smartphone, Layers, Github, Mail, Dumbbell, Apple } from "lucide-react"
+import {
+	Battery,
+	Clock,
+	Copy,
+	Download,
+	Zap,
+	Shield,
+	Smartphone,
+	Layers,
+	Github,
+	Mail,
+	Dumbbell,
+	Apple,
+	Building2,
+	FileText,
+	ListChecks,
+	CreditCard,
+} from "lucide-react"
 import { GetUpdatesForm } from "@/components/GetUpdatesForm"
+
+/** Create a separate Formspree form for Hallmark interest, then set NEXT_PUBLIC_FORMSPREE_HALLMARK in Vercel env. */
+const HALLMARK_INTEREST_FORMSPREE_ID =
+	process.env.NEXT_PUBLIC_FORMSPREE_HALLMARK ?? "xlgpvvaj"
 
 const apps = [
 	{
@@ -42,16 +63,16 @@ const apps = [
 			{ icon: Zap, text: "Smart refresh battery tracking" },
 			{ icon: Smartphone, text: "Seamless Touch Bar integration" },
 		],
-		image: "/batteryclock.png?height=400&width=600",
+		image: "/batteryclock.png",
 		downloadUrl: "https://github.com/ashworth3/BatteryClock/releases/tag/BatteryClock",
 		githubUrl: "https://github.com/ashworth3/BatteryClock",
 	},
 	{
-		id: "strengthai",
-		name: "StrengthAI",
+		id: "strength-ai",
+		name: "Strength AI",
 		tagline: "AI-powered strength training, simplified.",
 		description:
-			"StrengthAI is an in-progress coaching and training companion that helps you build plans, track progress, and stay consistent.",
+			"Strength AI is an in-progress coaching and training companion that helps you build plans, track progress, and stay consistent.",
 		icon: Dumbbell,
 		color: "bg-amber-500",
 		workInProgress: true,
@@ -62,7 +83,25 @@ const apps = [
 			{ icon: Github, text: "Accepting beta testers" },
 		],
 		image: "/strengthai.png",
-		badges: ["iOS", "AI"],
+		badges: ["iOS", "React Native", "TypeScript", "AI"],
+	},
+	{
+		id: "hallmark-app",
+		name: "Hallmark",
+		tagline: "Hallmark IT on iOS",
+		description:
+			"Hallmark is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, in-app payments, and support.",
+		icon: Building2,
+		color: "bg-indigo-600",
+		workInProgress: true,
+		features: [
+			{ icon: FileText, text: "Project & work intake form" },
+			{ icon: ListChecks, text: "Track services & status" },
+			{ icon: CreditCard, text: "In-app Stripe for payments" },
+			{ icon: Mail, text: "Quick contact & support info in app" },
+		],
+		image: "/hallmark-mobile-app.png",
+		badges: ["React Native", "TypeScript", "iOS"],
 	},
 ]
 
@@ -348,6 +387,12 @@ const localeToBadgeKey = (locale: string) => {
 	}
 }
 
+/** BatteryClock hero image: dark site theme → dark UI screenshot; light theme → light UI screenshot. */
+function batteryClockScreenshotSrc(mounted: boolean, resolvedTheme: string | undefined) {
+	if (mounted && resolvedTheme === "dark") return "/batteryclock.png"
+	return "/batteryclock-light.png"
+}
+
 export function AppShowcase() {
 	const { resolvedTheme } = useTheme()
 	const [badgeKey, setBadgeKey] = useState<string>("US")
@@ -399,7 +444,15 @@ export function AppShowcase() {
 												className="h-16 w-16 rounded-2xl object-cover"
 											/>
 										</div>
-									) : app.id === "strengthai" ? (
+									) : app.id === "hallmark-app" ? (
+										<div className="rounded-2xl overflow-hidden">
+											<img
+												src="/hallmark-square.jpeg"
+												alt={`${app.name} icon`}
+												className="h-16 w-16 rounded-2xl object-cover"
+											/>
+										</div>
+									) : app.id === "strength-ai" ? (
 										<div className="rounded-2xl overflow-hidden">
 											<img
 												src="/strengthai-icon.png"
@@ -437,7 +490,7 @@ export function AppShowcase() {
 								<div className="grid sm:grid-cols-2 gap-4">
 									{app.features.map((feature, featureIndex) => (
 										<div key={featureIndex} className="flex items-center gap-3">
-											{app.id === "strengthai" && feature.text === "OAuth" ? (
+											{app.id === "strength-ai" && feature.text === "OAuth" ? (
 												<>
 													<Apple className="h-5 w-5 text-muted-foreground shrink-0" />
 													<svg className="h-5 w-5 shrink-0 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -456,9 +509,19 @@ export function AppShowcase() {
 								</div>
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
-									{(app as { workInProgress?: boolean }).workInProgress ? (
+									{(app as { workInProgress?: boolean }).workInProgress &&
+									(app.id === "strength-ai" || app.id === "hallmark-app") ? (
 										<div className="w-full max-w-md">
-											<GetUpdatesForm />
+											{app.id === "strength-ai" ? (
+												<GetUpdatesForm />
+											) : (
+												<GetUpdatesForm
+													formId={HALLMARK_INTEREST_FORMSPREE_ID}
+													storageKey="hallmark-app-interest-joined"
+													messageOnSuccess="You will receive updates related to Hallmark progress. ✅"
+													emailFieldId="hallmark-interest-email"
+												/>
+											)}
 										</div>
 									) : app.appStoreUrl ? (
 										<>
@@ -524,7 +587,16 @@ export function AppShowcase() {
 							<Card className="overflow-hidden shadow-2xl">
 								<CardContent className="p-0">
 									<img
-										src={app.image || "/placeholder.svg"}
+										key={
+											app.id === "batteryclock"
+												? `batteryclock-${mounted ? resolvedTheme ?? "light" : "light"}`
+												: `${app.id}-screenshot`
+										}
+										src={
+											app.id === "batteryclock"
+												? batteryClockScreenshotSrc(mounted, resolvedTheme)
+												: app.image || "/placeholder.svg"
+										}
 										alt={`${app.name} screenshot showing the app interface and features`}
 										className="w-full h-auto object-cover"
 									/>

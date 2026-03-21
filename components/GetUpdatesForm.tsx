@@ -7,29 +7,50 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
 
-const FORM_KEY = "xkovadyn"
-const STORAGE_KEY = "strengthai-waitlist-joined"
+const DEFAULT_STRENGTH_AI_FORM =
+  process.env.NEXT_PUBLIC_FORMSPREE_STRENGTH_AI ?? "xkovadyn"
+const DEFAULT_STRENGTH_AI_STORAGE = "strengthai-waitlist-joined"
 
-export function GetUpdatesForm({ className }: { className?: string }) {
-  const [state, handleSubmit] = useForm<{ email: string }>(FORM_KEY)
+export type GetUpdatesFormProps = {
+  className?: string
+  /** Formspree form id (from your Formspree dashboard, e.g. `abcxyz`) */
+  formId?: string
+  /** localStorage key so returning visitors see the success state */
+  storageKey?: string
+  messageOnSuccess?: string
+  /** Unique id for the email input (required if multiple forms on one page) */
+  emailFieldId?: string
+  submitLabel?: string
+}
+
+export function GetUpdatesForm({
+  className,
+  formId = DEFAULT_STRENGTH_AI_FORM,
+  storageKey = DEFAULT_STRENGTH_AI_STORAGE,
+  messageOnSuccess = "You will receive updates related to Strength AI progress. ✅",
+  emailFieldId = "get-updates-email",
+  submitLabel = "Get Updates",
+}: GetUpdatesFormProps) {
+  const [state, handleSubmit] = useForm<{ email: string }>(formId)
   const [rememberedJoin, setRememberedJoin] = useState(false)
+  const errorId = `${emailFieldId}-error`
 
   useEffect(() => {
     if (typeof window === "undefined") return
-    if (localStorage.getItem(STORAGE_KEY) === "true") setRememberedJoin(true)
-  }, [])
+    if (localStorage.getItem(storageKey) === "true") setRememberedJoin(true)
+  }, [storageKey])
 
   useEffect(() => {
     if (state.succeeded && typeof window !== "undefined") {
-      localStorage.setItem(STORAGE_KEY, "true")
+      localStorage.setItem(storageKey, "true")
       setRememberedJoin(true)
     }
-  }, [state.succeeded])
+  }, [state.succeeded, storageKey])
 
   if (state.succeeded || rememberedJoin) {
     return (
       <p className={cn("text-sm font-medium text-green-600 dark:text-green-400", className)}>
-        You will receive updates related to StrengthAI progress. ✅
+        {messageOnSuccess}
       </p>
     )
   }
@@ -41,11 +62,11 @@ export function GetUpdatesForm({ className }: { className?: string }) {
       noValidate
     >
       <div className="flex-1 min-w-0 flex flex-col gap-1">
-        <Label htmlFor="get-updates-email" className="sr-only">
+        <Label htmlFor={emailFieldId} className="sr-only">
           Email for updates
         </Label>
         <Input
-          id="get-updates-email"
+          id={emailFieldId}
           type="email"
           name="email"
           placeholder="you@example.com"
@@ -53,14 +74,14 @@ export function GetUpdatesForm({ className }: { className?: string }) {
           disabled={state.submitting}
           autoComplete="email"
           aria-invalid={state.errors !== null}
-          aria-describedby={state.errors ? "get-updates-email-error" : undefined}
+          aria-describedby={state.errors ? errorId : undefined}
           className="h-11 rounded-lg border-input bg-background focus-visible:ring-2"
         />
         <ValidationError
           prefix="Email"
           field="email"
           errors={state.errors}
-          id="get-updates-email-error"
+          id={errorId}
           className="text-sm text-destructive"
         />
       </div>
@@ -70,7 +91,7 @@ export function GetUpdatesForm({ className }: { className?: string }) {
         disabled={state.submitting}
         className="shrink-0 h-11 rounded-lg px-6 sm:min-w-[7rem]"
       >
-        {state.submitting ? "Sending…" : "Get Updates"}
+        {state.submitting ? "Sending…" : submitLabel}
       </Button>
     </form>
   )

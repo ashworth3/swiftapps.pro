@@ -41,8 +41,13 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#strengthai" className="hover:text-foreground transition-colors">
-                  StrengthAI
+                <a href="#hallmark-app" className="hover:text-foreground transition-colors">
+                  Hallmark
+                </a>
+              </li>
+              <li>
+                <a href="#strength-ai" className="hover:text-foreground transition-colors">
+                  Strength AI
                 </a>
               </li>
             </ul>
@@ -63,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/privacy/strengthai" className="hover:text-foreground transition-colors">
-                  StrengthAI Privacy
+                  Strength AI Privacy
                 </Link>
               </li>
             </ul>

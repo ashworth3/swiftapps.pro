@@ -15,7 +15,7 @@ export default function StrengthAIPrivacyPolicy() {
                 Back to Home
               </Link>
             </Button>
-            <h1 className="text-4xl font-bold mb-4">StrengthAI Privacy Policy</h1>
+            <h1 className="text-4xl font-bold mb-4">Strength AI Privacy Policy</h1>
             <p className="text-muted-foreground">Last updated: March 2025</p>
           </div>
 
@@ -26,7 +26,7 @@ export default function StrengthAIPrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  This privacy policy applies to StrengthAI. We are committed to protecting your privacy and being transparent about how we handle your information.
+                  This privacy policy applies to Strength AI. We are committed to protecting your privacy and being transparent about how we handle your information.
                 </p>
               </CardContent>
             </Card>
@@ -81,7 +81,7 @@ export default function StrengthAIPrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  We may update this policy from time to time. The “Last updated” date at the top of this page will reflect the latest version. Continued use of StrengthAI after changes constitutes acceptance of the updated policy.
+                  We may update this policy from time to time. The “Last updated” date at the top of this page will reflect the latest version. Continued use of Strength AI after changes constitutes acceptance of the updated policy.
                 </p>
               </CardContent>
             </Card>
