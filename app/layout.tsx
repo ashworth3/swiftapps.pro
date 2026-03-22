@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "swiftapps.pro",
   description:
-    "Lightweight apps and utilities for the Apple ecosystem. Hallmark, Sendify, BatteryClock, CopyBoard, Strength AI, and more — built for speed, simplicity, and privacy.",
+    "Apps for Apple. Mac and iPhone apps, plus work in progress. Hallmark, Sendify, BatteryClock, CopyBoard, Strength AI, and more. Built to feel native.",
   icons: {
     icon: [
       { url: '/favicon.ico' },

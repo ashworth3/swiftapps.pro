@@ -73,7 +73,7 @@ const apps = [
 	{
 		id: "sendify",
 		name: "Sendify",
-		tagline: "iOS messaging, built for clarity.",
+		tagline: "iOS sharing, built for clarity.",
 		description:
 			"Sendify is an in-progress iOS app focused on making communication faster, clearer, and more reliable for everyday use.",
 		icon: Smartphone,
