@@ -46,6 +46,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#sendify" className="hover:text-foreground transition-colors">
+                  Sendify
+                </a>
+              </li>
+              <li>
                 <a href="#strength-ai" className="hover:text-foreground transition-colors">
                   Strength AI
                 </a>
@@ -69,6 +74,11 @@ export function Footer() {
               <li>
                 <Link href="/privacy/strengthai" className="hover:text-foreground transition-colors">
                   Strength AI Privacy
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy/sendify" className="hover:text-foreground transition-colors">
+                  Sendify Privacy
                 </Link>
               </li>
             </ul>

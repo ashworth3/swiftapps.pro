@@ -28,6 +28,9 @@ import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 /** Create a separate Formspree form for Hallmark interest, then set NEXT_PUBLIC_FORMSPREE_HALLMARK in Vercel env. */
 const HALLMARK_INTEREST_FORMSPREE_ID =
 	process.env.NEXT_PUBLIC_FORMSPREE_HALLMARK ?? "xlgpvvaj"
+/** Create a separate Formspree form for Sendify interest, then set NEXT_PUBLIC_FORMSPREE_SENDIFY in Vercel env. */
+const SENDIFY_INTEREST_FORMSPREE_ID =
+	process.env.NEXT_PUBLIC_FORMSPREE_SENDIFY ?? "mreyvjgy"
 
 const apps = [
 	{
@@ -68,11 +71,29 @@ const apps = [
 		githubUrl: "https://github.com/ashworth3/BatteryClock",
 	},
 	{
+		id: "sendify",
+		name: "Sendify",
+		tagline: "iOS messaging, built for clarity.",
+		description:
+			"Sendify is an in-progress iOS app focused on making communication faster, clearer, and more reliable for everyday use.",
+		icon: Smartphone,
+		color: "bg-sky-600",
+		workInProgress: true,
+		features: [
+			{ icon: Zap, text: "Fast, focused sharing" },
+			{ icon: Layers, text: "In active development" },
+			{ icon: Shield, text: "Privacy-minded approach" },
+			{ icon: Mail, text: "Reliable message delivery" },
+		],
+		image: "/sendify-light.png",
+		badges: ["iOS", "React Native", "TypeScript"],
+	},
+	{
 		id: "strength-ai",
 		name: "Strength AI",
-		tagline: "AI-powered strength training, simplified.",
+		tagline: "Smarter strength training, without the noise.",
 		description:
-			"Strength AI is an in-progress coaching and training companion that helps you build plans, track progress, and stay consistent.",
+			"Strength AI is an in-progress coaching and training companion that helps you create plans, track progress, and stay consistent week to week.",
 		icon: Dumbbell,
 		color: "bg-amber-500",
 		workInProgress: true,
@@ -387,10 +408,17 @@ const localeToBadgeKey = (locale: string) => {
 	}
 }
 
-/** BatteryClock hero image: dark site theme → dark UI screenshot; light theme → light UI screenshot. */
-function batteryClockScreenshotSrc(mounted: boolean, resolvedTheme: string | undefined) {
-	if (mounted && resolvedTheme === "dark") return "/batteryclock.png"
-	return "/batteryclock-light.png"
+/** Theme-aware project previews for select apps. */
+function projectPreviewSrc(appId: string, mounted: boolean, resolvedTheme: string | undefined, fallback: string) {
+	if (appId === "batteryclock") {
+		if (mounted && resolvedTheme === "dark") return "/batteryclock.png"
+		return "/batteryclock-light.png"
+	}
+	if (appId === "sendify") {
+		if (mounted && resolvedTheme === "dark") return "/sendify-dark.png"
+		return "/sendify-light.png"
+	}
+	return fallback
 }
 
 export function AppShowcase() {
@@ -460,6 +488,14 @@ export function AppShowcase() {
 												className="h-16 w-16 rounded-2xl object-cover"
 											/>
 										</div>
+									) : app.id === "sendify" ? (
+										<div className="rounded-2xl overflow-hidden">
+											<img
+												src="/sendify.png"
+												alt={`${app.name} icon`}
+												className="h-16 w-16 rounded-2xl object-cover"
+											/>
+										</div>
 									) : (
 										<div className={`p-3 rounded-2xl ${app.color}`}>
 											<app.icon className="h-8 w-8 text-white" />
@@ -510,19 +546,33 @@ export function AppShowcase() {
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
 									{(app as { workInProgress?: boolean }).workInProgress &&
-									(app.id === "strength-ai" || app.id === "hallmark-app") ? (
+									(app.id === "strength-ai" || app.id === "hallmark-app" || app.id === "sendify") ? (
 										<div className="w-full max-w-md">
 											{app.id === "strength-ai" ? (
 												<GetUpdatesForm />
-											) : (
+											) : app.id === "hallmark-app" ? (
 												<GetUpdatesForm
 													formId={HALLMARK_INTEREST_FORMSPREE_ID}
 													storageKey="hallmark-app-interest-joined"
 													messageOnSuccess="You will receive updates related to Hallmark progress. ✅"
 													emailFieldId="hallmark-interest-email"
 												/>
+											) : (
+												<GetUpdatesForm
+													formId={SENDIFY_INTEREST_FORMSPREE_ID}
+													storageKey="sendify-interest-joined"
+													messageOnSuccess="You will receive updates related to Sendify progress. ✅"
+													emailFieldId="sendify-interest-email"
+												/>
 											)}
 										</div>
+									) : (app as { contactOnly?: boolean }).contactOnly ? (
+										<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
+											<a href="#contact">
+												<Mail className="h-4 w-4" />
+												Get in Touch
+											</a>
+										</Button>
 									) : app.appStoreUrl ? (
 										<>
 											<a
@@ -588,14 +638,17 @@ export function AppShowcase() {
 								<CardContent className="p-0">
 									<img
 										key={
-											app.id === "batteryclock"
-												? `batteryclock-${mounted ? resolvedTheme ?? "light" : "light"}`
+											app.id === "batteryclock" || app.id === "sendify"
+												? `${app.id}-${mounted ? resolvedTheme ?? "light" : "light"}`
 												: `${app.id}-screenshot`
 										}
 										src={
-											app.id === "batteryclock"
-												? batteryClockScreenshotSrc(mounted, resolvedTheme)
-												: app.image || "/placeholder.svg"
+											projectPreviewSrc(
+												app.id,
+												mounted,
+												resolvedTheme,
+												app.image || "/placeholder.svg"
+											)
 										}
 										alt={`${app.name} screenshot showing the app interface and features`}
 										className="w-full h-auto object-cover"
