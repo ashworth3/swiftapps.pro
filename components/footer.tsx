@@ -89,7 +89,11 @@ export function Footer() {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 <a href="#" className="underline hover:text-primary transition-colors">swiftapps.pro</a> | All rights reserved.
+            © {new Date().getFullYear()}{" "}
+            <a href="#" className="underline hover:text-primary transition-colors">
+              swiftapps.pro
+            </a>{" "}
+            | All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <span>Made for the Apple ecosystem</span>

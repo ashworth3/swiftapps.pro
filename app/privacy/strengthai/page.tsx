@@ -16,7 +16,7 @@ export default function StrengthAIPrivacyPolicy() {
               </Link>
             </Button>
             <h1 className="text-4xl font-bold mb-4">Strength AI Privacy Policy</h1>
-            <p className="text-muted-foreground">Last updated: March 2025</p>
+            <p className="text-muted-foreground">Last updated: March 2026</p>
           </div>
 
           <div className="space-y-8">
