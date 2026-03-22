@@ -4,12 +4,19 @@
 
 html {
   /* Anchor targets (#apps, #copyboard, …) sit below sticky navbar */
-  scroll-padding-top: 4.5rem;
+  scroll-padding-top: 4.75rem;
 }
 
-@media (min-width: 768px) {
+/* Native in-page links (desktop navbar, footer, etc.) */
+@media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-padding-top: 4.75rem;
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -98,9 +105,6 @@ body {
 @layer base {
   * {
     @apply border-border;
-  }
-  html {
-    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
