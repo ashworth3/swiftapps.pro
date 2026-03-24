@@ -28,17 +28,14 @@ import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 /** Create a separate Formspree form for Hallmark interest, then set NEXT_PUBLIC_FORMSPREE_HALLMARK in Vercel env. */
 const HALLMARK_INTEREST_FORMSPREE_ID =
 	process.env.NEXT_PUBLIC_FORMSPREE_HALLMARK ?? "xlgpvvaj"
-/** Create a separate Formspree form for Sendify interest, then set NEXT_PUBLIC_FORMSPREE_SENDIFY in Vercel env. */
-const SENDIFY_INTEREST_FORMSPREE_ID =
-	process.env.NEXT_PUBLIC_FORMSPREE_SENDIFY ?? "mreyvjgy"
 
 const apps = [
 	{
 		id: "copyboard",
-		name: "Copyboard - Clipboard Manager",
+		name: "CopyBoard - Clipboard Manager",
 		tagline: "Save and reuse clipboard items",
 		description:
-			"A lightweight clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly—now available on the Mac App Store with a DMG download for offline installs.",
+			"A lightweight clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly, now available on the Mac App Store with a DMG download for offline installs.",
 		icon: Copy,
 		color: "bg-blue-500",
 		appStoreUrl: "https://apps.apple.com/us/app/copyboard-clipboard-manager/id6755758977?mt=12",
@@ -73,20 +70,20 @@ const apps = [
 	{
 		id: "sendify",
 		name: "Sendify",
-		tagline: "iOS sharing, built for clarity.",
+		tagline: "Save links, notes, and locations in seconds.",
 		description:
-			"Sendify is an in-progress iOS app focused on making communication faster, clearer, and more reliable for everyday use.",
+			"Sendify is now live on the App Store. Save links with notes, keep important locations, and organize quick thoughts in one clean place that is fast to use every day.",
 		icon: Smartphone,
 		color: "bg-sky-600",
-		workInProgress: true,
+		appStoreUrl: "https://apps.apple.com/us/app/sendify-share-anything/id6760957976",
 		features: [
-			{ icon: Zap, text: "Fast, focused sharing" },
-			{ icon: Layers, text: "In active development" },
-			{ icon: Shield, text: "Privacy-minded approach" },
-			{ icon: Mail, text: "Reliable message delivery" },
+			{ icon: Zap, text: "Save links with optional notes" },
+			{ icon: Layers, text: "Store locations with map previews" },
+			{ icon: Mail, text: "Write and organize quick notes" },
+			{ icon: Shield, text: "Private, no account required" },
 		],
 		image: "/sendify-light.png",
-		badges: ["iOS", "React Native", "TypeScript"],
+		badges: ["iPhone", "iPad", "iOS"],
 	},
 	{
 		id: "strength-ai",
@@ -104,7 +101,7 @@ const apps = [
 			{ icon: Github, text: "Accepting beta testers" },
 		],
 		image: "/strengthai.png",
-		badges: ["iOS", "React Native", "TypeScript", "AI"],
+		badges: ["iOS", "AI"],
 	},
 	{
 		id: "hallmark-app",
@@ -122,7 +119,7 @@ const apps = [
 			{ icon: Mail, text: "Quick contact & support info in app" },
 		],
 		image: "/hallmark-mobile-app.png",
-		badges: ["React Native", "TypeScript", "iOS"],
+		badges: ["iOS"],
 	},
 ]
 
@@ -315,6 +312,19 @@ const badgeFiles: Record<
 	},
 }
 
+const iosBadgeFiles: Record<
+	string,
+	{
+		black: string
+		white: string
+	}
+> = {
+	US: {
+		black: "/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",
+		white: "/Download-on-the-App-Store/US/Download_on_App_Store/White_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg",
+	},
+}
+
 const localeToBadgeKey = (locale: string) => {
 	const normalized = locale.toLowerCase()
 	const [language, region = ""] = normalized.split("-")
@@ -439,6 +449,12 @@ export function AppShowcase() {
 		return entry.black
 	}, [badgeKey, resolvedTheme, mounted])
 
+	const iosBadgeSrc = useMemo(() => {
+		const entry = iosBadgeFiles[badgeKey] ?? iosBadgeFiles["US"]
+		if (resolvedTheme === "dark") return entry.white
+		return entry.black
+	}, [badgeKey, resolvedTheme])
+
 	return (
 		<section id="apps" className="container mx-auto px-4 py-20">
 			<div className="text-center mb-16">
@@ -546,23 +562,16 @@ export function AppShowcase() {
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
 									{(app as { workInProgress?: boolean }).workInProgress &&
-									(app.id === "strength-ai" || app.id === "hallmark-app" || app.id === "sendify") ? (
+									(app.id === "strength-ai" || app.id === "hallmark-app") ? (
 										<div className="w-full max-w-md">
 											{app.id === "strength-ai" ? (
 												<GetUpdatesForm />
-											) : app.id === "hallmark-app" ? (
+											) : (
 												<GetUpdatesForm
 													formId={HALLMARK_INTEREST_FORMSPREE_ID}
 													storageKey="hallmark-app-interest-joined"
 													messageOnSuccess="You will receive updates related to Hallmark progress. ✅"
 													emailFieldId="hallmark-interest-email"
-												/>
-											) : (
-												<GetUpdatesForm
-													formId={SENDIFY_INTEREST_FORMSPREE_ID}
-													storageKey="sendify-interest-joined"
-													messageOnSuccess="You will receive updates related to Sendify progress. ✅"
-													emailFieldId="sendify-interest-email"
 												/>
 											)}
 										</div>
@@ -580,11 +589,15 @@ export function AppShowcase() {
 												target="_blank"
 												rel="noopener noreferrer"
 												className="inline-flex transition-transform hover:scale-[1.01]"
-												aria-label={`Download ${app.name} on the Mac App Store`}
+												aria-label={
+													app.id === "sendify"
+														? `Download ${app.name} on the App Store`
+														: `Download ${app.name} on the Mac App Store`
+												}
 											>
 												<img
-													src={badgeSrc}
-													alt="Download on the Mac App Store"
+													src={app.id === "sendify" ? iosBadgeSrc : badgeSrc}
+													alt={app.id === "sendify" ? "Download on the App Store" : "Download on the Mac App Store"}
 													className="h-12 w-auto"
 												/>
 											</a>
@@ -596,14 +609,6 @@ export function AppShowcase() {
 													</a>
 												</Button>
 											)}
-											{app.id !== "copyboard" && (
-												<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
-													<a href={app.githubUrl} target="_blank" rel="noopener noreferrer">
-														<Github className="h-4 w-4" />
-														View Repo
-													</a>
-												</Button>
-											)}
 										</>
 									) : (
 										<>
@@ -611,12 +616,6 @@ export function AppShowcase() {
 												<a href={app.downloadUrl}>
 													<Download className="h-4 w-4" />
 													Download
-												</a>
-											</Button>
-											<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
-												<a href={app.githubUrl} target="_blank" rel="noopener noreferrer">
-													<Github className="h-4 w-4" />
-													View Repo
 												</a>
 											</Button>
 										</>

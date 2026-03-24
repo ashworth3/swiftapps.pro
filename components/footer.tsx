@@ -11,7 +11,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-lg font-semibold mb-4">About</h3>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Building fast, lightweight apps and utilities across the Apple ecosystem — designed to stay out of your way and improve your day-to-day flow.
+              Building fast, lightweight apps and utilities across the Apple ecosystem, designed to stay out of your way and improve your day-to-day flow.
             </p>
             <div className="flex gap-2">
               <Button variant="outline" size="icon" asChild>
