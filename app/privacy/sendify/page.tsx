@@ -12,7 +12,7 @@ export default function SendifyPrivacyPolicy() {
             <Button variant="outline" asChild className="mb-4 bg-transparent">
               <Link href="/" className="gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Back to Home
+                Home
               </Link>
             </Button>
             <h1 className="text-4xl font-bold mb-4">Sendify Privacy Policy</h1>

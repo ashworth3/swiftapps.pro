@@ -31,7 +31,17 @@ Visit the site at [swiftapps.pro](https://swiftapps.pro)
    npm install
    ```
 
-3. Start dev server:
+3. Configure environment variables:
+   ```env
+   NEXT_PUBLIC_FORMSPREE_HALLMARK=...
+   NEXT_PUBLIC_FORMSPREE_STRENGTH_AI=...
+   NEXT_PUBLIC_FORMSPREE_SENDIFY=...
+   RESEND_API_KEY=...
+   CONTACT_TO_EMAIL=andre@hallmarkoc.com
+   CONTACT_FROM_EMAIL="SwiftApps Contact <onboarding@resend.dev>"
+   ```
+
+4. Start dev server:
    ```bash
    npm run dev
    ```

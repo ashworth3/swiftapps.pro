@@ -9,38 +9,45 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, MessageSquare, Send, Github, Bug } from "lucide-react"
 
-const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""
-
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string>("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
     setFormStatus(null)
+    setErrorMessage("")
 
-    if (!WEB3FORMS_ACCESS_KEY) {
-      setFormStatus("error")
-      setIsSubmitting(false)
-      return
+    const formElement = e.target as HTMLFormElement
+    const formData = new FormData(formElement)
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      subject: String(formData.get("subject") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
     }
 
-    const formData = new FormData(e.target as HTMLFormElement)
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY)
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
       })
 
       if (response.ok) {
         setFormStatus("success")
+        formElement.reset()
       } else {
+        const data = (await response.json().catch(() => null)) as { error?: string } | null
+        setErrorMessage(data?.error ?? "There was an error sending your message. Please try again.")
         setFormStatus("error")
       }
     } catch (error) {
+      setErrorMessage("There was an error sending your message. Please try again.")
       setFormStatus("error")
     } finally {
       setIsSubmitting(false)
@@ -110,7 +117,7 @@ export function Contact() {
                 <p className="text-green-500 mt-4">Your message has been sent successfully!</p>
               )}
               {formStatus === "error" && (
-                <p className="text-red-500 mt-4">There was an error sending your message. Please try again.</p>
+                <p className="text-red-500 mt-4">{errorMessage || "There was an error sending your message. Please try again."}</p>
               )}
             </CardContent>
           </Card>

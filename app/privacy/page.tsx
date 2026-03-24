@@ -4,6 +4,14 @@ import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function PrivacyPolicy() {
+  const policies = [
+    { href: "/privacy", label: "Privacy Policy (swiftapps.pro)" },
+    { href: "/privacy/batteryclock", label: "BatteryClock Privacy Policy" },
+    { href: "/privacy/copyboard", label: "CopyBoard Privacy Policy" },
+    { href: "/privacy/strengthai", label: "Strength AI Privacy Policy" },
+    { href: "/privacy/sendify", label: "Sendify Privacy Policy" },
+  ] as const
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-4 py-12">
@@ -12,7 +20,7 @@ export default function PrivacyPolicy() {
             <Button variant="outline" asChild className="mb-4 bg-transparent">
               <Link href="/" className="gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Back to Home
+                Home
               </Link>
             </Button>
             <h1 className="text-4xl font-bold mb-4">Privacy Policy</h1>
@@ -22,68 +30,55 @@ export default function PrivacyPolicy() {
           <div className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Our Commitment to Privacy</CardTitle>
+                <CardTitle>Privacy Policy (swiftapps.pro)</CardTitle>
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  Your privacy is important to us. This privacy policy explains how our macOS applications handle your data.
+                  This page covers privacy for the website itself. App-specific policies are available below.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>BatteryClock</CardTitle>
-              </CardHeader>
-              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
-                <h3>Data Collection</h3>
-                <ul>
-                  <li>BatteryClock only accesses your Mac's battery information to display current status</li>
-                  <li>No personal data is collected, stored, or transmitted</li>
-                  <li>All battery data remains on your device</li>
-                </ul>
-                <h3>Permissions</h3>
-                <ul>
-                  <li>System battery information access (read-only)</li>
-                  <li>Touch Bar display access for showing battery status</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>CopyBoard</CardTitle>
-              </CardHeader>
-              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
-                <h3>Data Collection</h3>
-                <ul>
-                  <li>CopyBoard stores clipboard history locally on your Mac</li>
-                  <li>No clipboard data is transmitted to external servers</li>
-                  <li>All clipboard history remains private and local to your device</li>
-                </ul>
-                <h3>Permissions</h3>
-                <ul>
-                  <li>Clipboard access to monitor and store copied content</li>
-                  <li>File system access for drag-and-drop functionality</li>
-                </ul>
-                <h3>Data Storage</h3>
-                <ul>
-                  <li>Clipboard history is stored in your user directory</li>
-                  <li>You can clear history at any time through the app</li>
-                  <li>Data is automatically cleaned based on your retention settings</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>Analytics and Tracking</CardTitle>
+                <CardTitle>Information We Collect</CardTitle>
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  None of our apps include any analytics, tracking, or telemetry. We believe in
-                  keeping your usage private and don't collect any usage statistics or crash reports.
+                  We collect limited information that you submit directly, such as contact form messages and waitlist emails.
                 </p>
+                <p>
+                  We do not sell your personal data.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Third-Party Services</CardTitle>
+              </CardHeader>
+              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
+                <ul>
+                  <li>Website forms may be processed through providers such as Resend and Formspree.</li>
+                  <li>Hosting and lightweight analytics providers may process technical request data.</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>All Privacy Policies</CardTitle>
+              </CardHeader>
+              <CardContent className="prose prose-slate dark:prose-invert max-w-none">
+                <ul>
+                  {policies.map((policy) => (
+                    <li key={policy.href}>
+                      <Link href={policy.href} className="text-blue-600 hover:underline dark:text-blue-400">
+                        {policy.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
 
@@ -93,11 +88,8 @@ export default function PrivacyPolicy() {
               </CardHeader>
               <CardContent className="prose prose-slate dark:prose-invert max-w-none">
                 <p>
-                  If you have any questions, please{" "}
-                  <Link href="/#contact" className="text-blue-600 hover:underline">
-                    contact us
-                  </Link>
-                  .
+                  If you have any questions, contact us at{" "}
+                  <a href="mailto:andre@hallmarkoc.com">andre@hallmarkoc.com</a>.
                 </p>
               </CardContent>
             </Card>

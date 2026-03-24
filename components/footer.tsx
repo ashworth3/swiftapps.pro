@@ -62,23 +62,37 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Navigate</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>
-                <a href="mailto:andre@hallmarkoc.com" className="hover:text-foreground transition-colors">
-                  Contact
-                </a>
+                <div>
+                  <Link href="/privacy" className="hover:text-foreground transition-colors">
+                    Privacy Policy
+                  </Link>
+                  <ul className="mt-2 space-y-2 pl-2 text-xs">
+                    <li>
+                      <Link href="/privacy/batteryclock" className="hover:text-foreground transition-colors">
+                        BatteryClock
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy/copyboard" className="hover:text-foreground transition-colors">
+                        CopyBoard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy/strengthai" className="hover:text-foreground transition-colors">
+                        Strength AI
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/privacy/sendify" className="hover:text-foreground transition-colors">
+                        Sendify
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-foreground transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy/strengthai" className="hover:text-foreground transition-colors">
-                  Strength AI Privacy
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy/sendify" className="hover:text-foreground transition-colors">
-                  Sendify Privacy
+                <Link href="/terms" className="hover:text-foreground transition-colors">
+                  Terms of Service
                 </Link>
               </li>
             </ul>
