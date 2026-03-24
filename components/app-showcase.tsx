@@ -449,12 +449,6 @@ export function AppShowcase() {
 		return entry.black
 	}, [badgeKey, resolvedTheme, mounted])
 
-	const iosBadgeSrc = useMemo(() => {
-		const entry = iosBadgeFiles[badgeKey] ?? iosBadgeFiles["US"]
-		if (resolvedTheme === "dark") return entry.white
-		return entry.black
-	}, [badgeKey, resolvedTheme])
-
 	return (
 		<section id="apps" className="container mx-auto px-4 py-20">
 			<div className="text-center mb-16">
@@ -595,11 +589,26 @@ export function AppShowcase() {
 														: `Download ${app.name} on the Mac App Store`
 												}
 											>
-												<img
-													src={app.id === "sendify" ? iosBadgeSrc : badgeSrc}
-													alt={app.id === "sendify" ? "Download on the App Store" : "Download on the Mac App Store"}
-													className="h-12 w-auto"
-												/>
+												{app.id === "sendify" ? (
+													<>
+														<img
+															src={iosBadgeFiles["US"].black}
+															alt="Download on the App Store"
+															className="h-12 w-auto dark:hidden"
+														/>
+														<img
+															src={iosBadgeFiles["US"].white}
+															alt="Download on the App Store"
+															className="hidden h-12 w-auto dark:block"
+														/>
+													</>
+												) : (
+													<img
+														src={badgeSrc}
+														alt="Download on the Mac App Store"
+														className="h-12 w-auto"
+													/>
+												)}
 											</a>
 											{app.dmgUrl && (
 												<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
