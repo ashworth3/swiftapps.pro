@@ -41,3 +41,4 @@ coverage
 
 # package managers
 .pnpm-store
+.env*.local
