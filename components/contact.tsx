@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, MessageSquare, Send, Github, Bug } from "lucide-react"
 
+const WEB3FORMS_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""
+
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState<"success" | "error" | null>(null)
@@ -18,8 +20,14 @@ export function Contact() {
     setIsSubmitting(true)
     setFormStatus(null)
 
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setFormStatus("error")
+      setIsSubmitting(false)
+      return
+    }
+
     const formData = new FormData(e.target as HTMLFormElement)
-    formData.append("access_key", "cea886b3-0646-48aa-b283-19335b00cb9b")
+    formData.append("access_key", WEB3FORMS_ACCESS_KEY)
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {

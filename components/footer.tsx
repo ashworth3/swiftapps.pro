@@ -20,7 +20,7 @@ export function Footer() {
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="mailto:ashworthandre@gmail.com">
+                <a href="mailto:andre@hallmarkoc.com">
                   <Mail className="h-4 w-4" />
                 </a>
               </Button>
@@ -62,7 +62,7 @@ export function Footer() {
             <h3 className="text-lg font-semibold mb-4">Navigate</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li>
-                <a href="mailto:ashworthandre@gmail.com" className="hover:text-foreground transition-colors">
+                <a href="mailto:andre@hallmarkoc.com" className="hover:text-foreground transition-colors">
                   Contact
                 </a>
               </li>
