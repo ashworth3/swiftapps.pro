@@ -35,7 +35,7 @@ export function Hero() {
           <Button variant="ghost" size="lg" className="gap-2" asChild>
             <a href="#contact">
               <Mail className="h-5 w-5" />
-              Get in Touch
+              Contact
             </a>
           </Button>
         </div>
