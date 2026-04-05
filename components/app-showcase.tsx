@@ -21,7 +21,6 @@ import {
 	Building2,
 	FileText,
 	ListChecks,
-	CreditCard,
 } from "lucide-react"
 import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 
@@ -108,15 +107,15 @@ const apps = [
 		name: "Hallmark",
 		tagline: "Hallmark IT on iOS",
 		description:
-			"Hallmark is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, in-app payments, and support.",
+			"Hallmark is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
 		icon: Building2,
 		color: "bg-indigo-600",
 		workInProgress: true,
 		features: [
-			{ icon: FileText, text: "Project & work intake form" },
-			{ icon: ListChecks, text: "Track services & status" },
-			{ icon: CreditCard, text: "In-app Stripe for payments" },
-			{ icon: Mail, text: "Quick contact & support info in app" },
+			{ icon: FileText, text: "Project intake form" },
+			{ icon: ListChecks, text: "View services" },
+			{ icon: Shield, text: "Client portal" },
+			{ icon: Mail, text: "Quick contact & support info" },
 		],
 		image: "/hallmark-mobile-app.png",
 		badges: ["iOS"],
