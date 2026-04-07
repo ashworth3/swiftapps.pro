@@ -17,11 +17,11 @@ export function Hero() {
 
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">
           Apps{" "}
-          <span className="text-blue-600 dark:text-blue-400">for Apple</span>
+          <span className="text-blue-600 dark:text-blue-400">by Andre</span>
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Mac and iPhone apps, with more on the way. Built to feel native.
+          Mac and iPhone apps, with more on the way.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
