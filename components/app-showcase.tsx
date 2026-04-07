@@ -34,7 +34,7 @@ const apps = [
 		name: "CopyBoard - Clipboard Manager",
 		tagline: "Save and reuse clipboard items",
 		description:
-			"A lightweight clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly, now available on the Mac App Store with a DMG download for offline installs.",
+			"Clipboard manager that keeps track of everything you copy. Features seamless drag-and-drop support and integrates perfectly with your workflow. Store clipboard history locally and access it instantly, now available on the Mac App Store with a DMG download for offline installs.",
 		icon: Copy,
 		color: "bg-blue-500",
 		appStoreUrl: "https://apps.apple.com/us/app/copyboard-clipboard-manager/id6755758977?mt=12",
@@ -53,7 +53,7 @@ const apps = [
 		name: "BatteryClock",
 		tagline: "Battery Time in Your Touch Bar",
 		description:
-			"A sleek utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences. Requires Pock (https://pock.app) to be installed and running.",
+			"Utility for Pock that displays your MacBook's battery percentage and remaining time directly in the Touch Bar. Never be caught off guard by a dead battery again. Perfect for MacBook Pro users who want quick access to battery information without opening system preferences. Requires Pock (https://pock.app) to be installed and running.",
 		icon: Battery,
 		color: "bg-green-500",
 		features: [
@@ -71,7 +71,7 @@ const apps = [
 		name: "Sendify",
 		tagline: "Save links, notes, and locations in seconds.",
 		description:
-			"Sendify is now live on the App Store. Save links with notes, keep important locations, and organize quick thoughts in one clean place that is fast to use every day.",
+			"Save links with notes, keep important locations, and organize quick thoughts in one clean place that is fast to use every day.",
 		icon: Smartphone,
 		color: "bg-sky-600",
 		appStoreUrl: "https://apps.apple.com/us/app/sendify-share-anything/id6760957976",
@@ -89,7 +89,7 @@ const apps = [
 		name: "Strength AI",
 		tagline: "Smarter strength training, without the noise.",
 		description:
-			"Strength AI is an in-progress coaching and training companion that helps you create plans, track progress, and stay consistent week to week.",
+			"Coaching and training companion that helps you create plans, track progress, and stay consistent week to week.",
 		icon: Dumbbell,
 		color: "bg-amber-500",
 		workInProgress: true,
@@ -104,10 +104,10 @@ const apps = [
 	},
 	{
 		id: "hallmark-app",
-		name: "Hallmark OC",
+		name: "HallmarkOC",
 		tagline: "Hallmark OC on iOS",
 		description:
-			"Hallmark OC is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
+			"iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
 		icon: Building2,
 		color: "bg-indigo-600",
 		appStoreUrl: "https://apps.apple.com/us/app/hallmarkoc/id6760892069",
@@ -117,7 +117,7 @@ const apps = [
 			{ icon: Shield, text: "Client portal" },
 			{ icon: Mail, text: "Quick contact & support info" },
 		],
-		image: "/hallmark-mobile-app.png",
+		image: "/hallmarkoc-light.png",
 		badges: ["iOS"],
 	},
 ]
@@ -427,6 +427,10 @@ function projectPreviewSrc(appId: string, mounted: boolean, resolvedTheme: strin
 		if (mounted && resolvedTheme === "dark") return "/sendify-dark.png"
 		return "/sendify-light.png"
 	}
+	if (appId === "hallmark-app") {
+		if (mounted && resolvedTheme === "dark") return "/hallmarkoc-dark.png"
+		return "/hallmarkoc-light.png"
+	}
 	return fallback
 }
 
@@ -649,7 +653,7 @@ export function AppShowcase() {
 								<CardContent className="p-0">
 									<img
 										key={
-											app.id === "batteryclock" || app.id === "sendify"
+											app.id === "batteryclock" || app.id === "sendify" || app.id === "hallmark-app"
 												? `${app.id}-${mounted ? resolvedTheme ?? "light" : "light"}`
 												: `${app.id}-screenshot`
 										}
