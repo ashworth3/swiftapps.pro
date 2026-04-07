@@ -16,7 +16,7 @@ const mobileLinks = [
   { href: "#batteryclock", label: "BatteryClock" },
   { href: "#sendify", label: "Sendify" },
   { href: "#strength-ai", label: "Strength AI" },
-  { href: "#hallmark-app", label: "Hallmark" },
+  { href: "#hallmark-app", label: "Hallmark OC" },
   { href: "#contact", label: "Contact" },
 ] as const
 

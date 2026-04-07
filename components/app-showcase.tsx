@@ -24,7 +24,7 @@ import {
 } from "lucide-react"
 import { GetUpdatesForm } from "@/components/GetUpdatesForm"
 
-/** Create a separate Formspree form for Hallmark interest, then set NEXT_PUBLIC_FORMSPREE_HALLMARK in Vercel env. */
+/** Create a separate Formspree form for Hallmark OC interest, then set NEXT_PUBLIC_FORMSPREE_HALLMARK in Vercel env. */
 const HALLMARK_INTEREST_FORMSPREE_ID =
 	process.env.NEXT_PUBLIC_FORMSPREE_HALLMARK ?? "xlgpvvaj"
 
@@ -104,13 +104,13 @@ const apps = [
 	},
 	{
 		id: "hallmark-app",
-		name: "Hallmark",
-		tagline: "Hallmark IT on iOS",
+		name: "Hallmark OC",
+		tagline: "Hallmark OC on iOS",
 		description:
-			"Hallmark is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
+			"Hallmark OC is an in-progress iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
 		icon: Building2,
 		color: "bg-indigo-600",
-		workInProgress: true,
+		appStoreUrl: "https://apps.apple.com/us/app/hallmarkoc/id6760892069",
 		features: [
 			{ icon: FileText, text: "Project intake form" },
 			{ icon: ListChecks, text: "View services" },
@@ -555,18 +555,9 @@ export function AppShowcase() {
 
 								<div className="flex flex-col sm:flex-row gap-3 items-start">
 									{(app as { workInProgress?: boolean }).workInProgress &&
-									(app.id === "strength-ai" || app.id === "hallmark-app") ? (
+									app.id === "strength-ai" ? (
 										<div className="w-full max-w-md">
-											{app.id === "strength-ai" ? (
-												<GetUpdatesForm />
-											) : (
-												<GetUpdatesForm
-													formId={HALLMARK_INTEREST_FORMSPREE_ID}
-													storageKey="hallmark-app-interest-joined"
-													messageOnSuccess="You will receive updates related to Hallmark progress. ✅"
-													emailFieldId="hallmark-interest-email"
-												/>
-											)}
+											<GetUpdatesForm />
 										</div>
 									) : (app as { contactOnly?: boolean }).contactOnly ? (
 										<Button variant="outline" size="lg" className="gap-2 bg-transparent" asChild>
@@ -598,6 +589,19 @@ export function AppShowcase() {
 														<img
 															src={iosBadgeFiles["US"].white}
 															alt="Download on the App Store"
+															className="hidden h-12 w-auto dark:block"
+														/>
+													</>
+												) : app.id === "hallmark-app" ? (
+													<>
+														<img
+															src={iosBadgeFiles["US"].black}
+															alt="Download Hallmark OC on the App Store"
+															className="h-12 w-auto dark:hidden"
+														/>
+														<img
+															src={iosBadgeFiles["US"].white}
+															alt="Download Hallmark OC on the App Store"
 															className="hidden h-12 w-auto dark:block"
 														/>
 													</>

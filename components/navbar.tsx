@@ -8,7 +8,7 @@ const appNavLinks = [
   { href: "#batteryclock", label: "BatteryClock" },
   { href: "#sendify", label: "Sendify" },
   { href: "#strength-ai", label: "Strength AI" },
-  { href: "#hallmark-app", label: "Hallmark" },
+  { href: "#hallmark-app", label: "Hallmark OC" },
 ] as const
 
 const linkClass =

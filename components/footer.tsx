@@ -42,7 +42,7 @@ export function Footer() {
               </li>
               <li>
                 <a href="#hallmark-app" className="hover:text-foreground transition-colors">
-                  Hallmark
+                  Hallmark OC
                 </a>
               </li>
               <li>
