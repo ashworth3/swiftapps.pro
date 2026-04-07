@@ -68,7 +68,7 @@ const apps = [
 	},
 	{
 		id: "sendify",
-		name: "Sendify",
+		name: "Sendify - Share Anything",
 		tagline: "Save links, notes, and locations in seconds.",
 		description:
 			"Save links with notes, keep important locations, and organize quick thoughts in one clean place that is fast to use every day.",
@@ -83,6 +83,24 @@ const apps = [
 		],
 		image: "/sendify-light.png",
 		badges: ["iPhone", "iPad", "iOS"],
+	},
+	{
+		id: "hallmark-app",
+		name: "HallmarkOC",
+		tagline: "Hallmark OC on iOS",
+		description:
+			"Client app for submitting requests, services, and getting support.",
+		icon: Building2,
+		color: "bg-indigo-600",
+		appStoreUrl: "https://apps.apple.com/us/app/hallmarkoc/id6760892069",
+		features: [
+			{ icon: FileText, text: "Project intake form" },
+			{ icon: ListChecks, text: "View services" },
+			{ icon: Shield, text: "Client portal" },
+			{ icon: Mail, text: "Quick contact & support info" },
+		],
+		image: "/hallmarkoc-light.png",
+		badges: ["iOS"],
 	},
 	{
 		id: "strength-ai",
@@ -101,24 +119,6 @@ const apps = [
 		],
 		image: "/strengthai.png",
 		badges: ["iOS", "AI"],
-	},
-	{
-		id: "hallmark-app",
-		name: "HallmarkOC",
-		tagline: "Hallmark OC on iOS",
-		description:
-			"iOS client portal for Hallmark IT, with project & work intake, service tracking, and support.",
-		icon: Building2,
-		color: "bg-indigo-600",
-		appStoreUrl: "https://apps.apple.com/us/app/hallmarkoc/id6760892069",
-		features: [
-			{ icon: FileText, text: "Project intake form" },
-			{ icon: ListChecks, text: "View services" },
-			{ icon: Shield, text: "Client portal" },
-			{ icon: Mail, text: "Quick contact & support info" },
-		],
-		image: "/hallmarkoc-light.png",
-		badges: ["iOS"],
 	},
 ]
 
